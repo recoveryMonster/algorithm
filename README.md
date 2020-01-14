@@ -15,7 +15,7 @@
 
 ### 创建一个基于数组的栈
 
-这里创建一个类来表示栈。详细代码可见 [stack-array.mjs] 文件。首先声明 Stack 类开始。
+这里创建一个类来表示栈。详细代码可见 [stack-array.mjs](https://github.com/recoveryMonster/algorithm/blob/master/src/js/data-structures/stack-array.mjs) 文件。首先声明 Stack 类开始。
 
 ``` js
 class Stack{
@@ -76,7 +76,7 @@ export {
 
 由于数组是元素的有序集合，为了保证元素排列有序，因此他会占用更多空间。因此我们需要一个既能直接获取元素，占用较少的内存空间，并且仍然保证所有元素按照我们的需要排列，因此我们使用对象来存储所有的栈元素，并保证它们的顺序遵循 LIFO 原则。
 
-首先创建一个 Stack 类（ [stack.mjs 文件]）。这里使用 count 属性来帮助我们记录栈的大小，以及添加和删除元素。
+首先创建一个 Stack 类（ [stack.mjs 文件](https://github.com/recoveryMonster/algorithm/blob/master/src/js/data-structures/stack.mjs)）。这里使用 count 属性来帮助我们记录栈的大小，以及添加和删除元素。
 
 ```
 class Stack{
@@ -374,4 +374,11 @@ class Deque{
 
 export { Deque };
 ```
+
+使用队列和双端队列解决的问题：
+
+- [循环队列-击鼓传花游戏]()
+- [回文检查器]()
+
+**回文**是正反都能读通的单词、词组、数或一系列字符的序列，例如 madam或 racecar。
 

@@ -1,4 +1,4 @@
-import {Queue} from '../../src/js/data-structures/Queue.mjs'
+import { Queue } from '../../src/js/data-structures/Queue.mjs'
 const queue = new Queue();
 console.log(queue.isEmpty()); // outputs true
 queue.enqueue('John');

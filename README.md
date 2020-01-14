@@ -180,3 +180,105 @@ console.log(stack.toString()); // 5,8
 - 使用 Symbol 实现类，但这实际上仍然会被破坏，详见 stackSymbol.mjs 文件。
 - 使用 ES6 的 WeakMap 实现类，WeakMap 可以存储键值对，其中键是对象，值可以是任意数据，但采用这种方法，代码的可读性不强，且扩展该类时无法继承私有属性。详见 stackWeakMap.mjs 文件。
 
+## 队列和双端队列
+
+队列遵循**先进先出（ FIFO ）**原则的一组有序的项。队列在尾部添加新元素，并从顶部移除元素。现实中，最常见的队列就是排队。
+
+### 创建队列
+
+首先声明 Queue 类，为了写出一个在获取元素时具有更高效的数据结构，我们使用一个对象来存储我们的元素。
+
+``` js
+constructor() {
+    this.count = 0; // 队列的大小
+    this.lowestCount = 0;// 队列的第一个元素
+    this.items = {}; //存储队列
+  }
+```
+
+接下来声明一些队列可用的方法：
+
+1. enqueue(element(s)) ：向队列尾部添加一个（ 或多个 ）新的元素。
+2. dequeue() ：移除队列的第一项（ 排在最前面的一项 ）并返回被移除的元素。
+3. peek() ：返回队列中的第一个元素。
+4. isEmpty() ：队列中不包含任何元素，返回 true，否则返回 false。
+5. size() ：返回队列中包含的元素个数。
+6. clear() ：清除队列中的元素。
+7. toString() ：返回队列的内容。
+
+``` js
+class Queue{
+  constructor() {
+    this.count = 0; // 队列的大小
+    this.lowestCount = 0;// 队列的第一个元素
+    this.items = {}; //存储队列
+  }
+  // 添加元素到队列尾部
+  enqueue(element) {
+    this.items[this.count] = element;
+    this.count++;
+  }
+  // 移除队列的第一个元素 并返回移除的元素
+  dequeue() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    let result = this.items[this.lowestCount];
+    delete this.items[this.lowestCount];
+    this.lowestCount++;
+    return result;
+  }
+  // 返回队列中的第一个元素
+  peek() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    return this.items[this.lowestCount];
+  }
+  isEmpty() {
+    return (this.count - this.lowestCount) === 0;
+  }
+  size() {
+    return this.count - this.lowestCount;
+  }
+  clear() {
+    this.items = {};
+    this.count = 0;
+    this.lowestCount = 0;
+  }
+  toString() {
+    if (this.isEmpty()) {
+      return '';
+    }
+    let queueString = `${this.items[this.lowestCount]}`;
+    for (let i = this.lowestCount + 1; i < this.count; i++){
+      queueString = `${queueString},${this.items[i]}`;
+    }
+    return queueString;
+  }
+}
+
+export {
+  Queue
+}
+```
+
+### 双端队列
+
+**双端队列**（ deque，或称 double-ended queue ）是把队列和栈相结合的一种数据结构。同时遵循了先进先出和后进先出的原则。例如电影中的队伍，一个刚买票的人如果只是需要简单询问信息，可以直接回到队伍头部。另外，在队伍末尾的人如果赶时间，他可以直接离开队伍。
+
+双端队列所需的方法：
+
+-  addFront(element) ：该方法在双端队列前端添加新的元素。
+- addBack(element) ：该方法在双端队列后端添加新的元素（实现方法和  Queue 类中的
+  enqueue 方法相同）。
+-  removeFront() ：该方法会从双端队列前端移除第一个元素（实现方法和 Queue 类中的
+  dequeue 方法相同）。
+- removeBack() ：该方法会从双端队列后端移除第一个元素（实现方法和 Stack 类中的
+  pop 方法一样）。
+- peekFront() ：该方法返回双端队列前端的第一个元素（实现方法和 Queue 类中的 peek
+  方法一样）。
+- peekBack() ：该方法返回双端队列后端的第一个元素（实现方法和 Stack 类中的 peek
+  方法一样）。
+- isEmpty()、size()、clear() 和 toString() 方法
+

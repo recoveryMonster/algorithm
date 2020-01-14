@@ -377,8 +377,8 @@ export { Deque };
 
 使用队列和双端队列解决的问题：
 
-- [循环队列-击鼓传花游戏]()
-- [回文检查器]()
+- [循环队列-击鼓传花游戏](https://github.com/recoveryMonster/algorithm/blob/master/examples/Queue/hotPotato.mjs)
+- [回文检查器](https://github.com/recoveryMonster/algorithm/blob/master/examples/Queue/palindromeChecker.mjs)
 
 **回文**是正反都能读通的单词、词组、数或一系列字符的序列，例如 madam或 racecar。
 

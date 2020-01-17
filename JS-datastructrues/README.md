@@ -380,5 +380,62 @@ export { Deque };
 - [循环队列-击鼓传花游戏](https://github.com/recoveryMonster/algorithm/blob/master/examples/Queue/hotPotato.mjs)
 - [回文检查器](https://github.com/recoveryMonster/algorithm/blob/master/examples/Queue/palindromeChecker.mjs)
 
-**回文**是正反都能读通的单词、词组、数或一系列字符的序列，例如 madam或 racecar。
+**回文**是正反都能读通的单词、词组、数或一系列字符的序列，例如 madam 或 racecar。
+
+## 链表
+
+由于数组的大小是固定的，从数组的起点或中间插入或移除项的成本很高，需要移动元素。（ JavaScript 内部实现同样如此。）
+
+链表存储有序的元素集合，但不同于数组，链表中的每个元素由一个存储元素本身的节点和一个指向下一个元素的引用（ 也称指针或链接 ）组成。
+
+![](https://raw.githubusercontent.com/recoveryMonster/HexoImages/master/blog/20200117090006.png)
+
+链表的好处在于，添加或移除元素的时候不需要移动其他元素，然而链表需要使用指针，因此想要访问链表中间的一个元素，则需要从起点（ **表头** ）开始迭代链表直到找到所需的元素。就像寻宝元素一样，你只能从第一条线索顺着往下找。
+
+### 创建链表
+
+下面是 LinkedList 类的 ”骨架“。
+
+```js
+import { defalutEquals } from '../util.mjs';
+import { Node } from './models/linked-list-models.mjs';
+
+class LinkedList{
+  constructor(equalsFn = defalutEquals) {
+    this.count = 0;// 链表中存储的数量
+    this.head = undefined; // 第一个元素的引用
+    this.equalsFn = equalsFn; // 用于比较链表中的元素是否相同，也可以实例化时自行传入
+  }
+}
+```
+
+这里默认的比较函数写在 util 文件中，便于复用：
+
+```js
+// js/util.mjs
+function defaultEquals(a, b) {
+  return a === b;
+}
+
+export {
+  defaultEquals,
+}
+```
+
+然后需要一个助手类，用于表示链表中的元素：
+
+```js
+// data-structures/models/linked-list-models.mjs
+class Node{
+  constructor(element) {
+    this.element = element; // 要加入链表中元素的值
+    this.next = undefined; // 链表中下一个元素的指针
+  }
+}
+
+
+export {
+  Node,
+}
+```
 

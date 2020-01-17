@@ -1,4 +1,5 @@
 # algorithm
+
 学习数据结构及算法的仓库，相关算法通过 TypeScript 实现。
 
 众所周知，Node.js 遵循的是 CommonJS 规范进行模块化开发，因为 ES6 在 JavaScript 标准中引入了官方的模块功能。因此，在这里都是用的是 ES6 模块导出。点击查看[相关差别及使用方法](https://recoverymonster.github.io/post/exportexport-default-he-exportsmoduleexports-de-qu-bie-yu-lian-xi/)。
@@ -270,17 +271,17 @@ export {
 双端队列所需的方法：
 
 -  addFront(element) ：该方法在双端队列前端添加新的元素。
-- addBack(element) ：该方法在双端队列后端添加新的元素（实现方法和  Queue 类中的
-  enqueue 方法相同）。
+-  addBack(element) ：该方法在双端队列后端添加新的元素（实现方法和  Queue 类中的
+   enqueue 方法相同）。
 -  removeFront() ：该方法会从双端队列前端移除第一个元素（实现方法和 Queue 类中的
-  dequeue 方法相同）。
-- removeBack() ：该方法会从双端队列后端移除第一个元素（实现方法和 Stack 类中的
-  pop 方法一样）。
-- peekFront() ：该方法返回双端队列前端的第一个元素（实现方法和 Queue 类中的 peek
-  方法一样）。
-- peekBack() ：该方法返回双端队列后端的第一个元素（实现方法和 Stack 类中的 peek
-  方法一样）。
-- isEmpty()、size()、clear() 和 toString() 方法
+   dequeue 方法相同）。
+-  removeBack() ：该方法会从双端队列后端移除第一个元素（实现方法和 Stack 类中的
+   pop 方法一样）。
+-  peekFront() ：该方法返回双端队列前端的第一个元素（实现方法和 Queue 类中的 peek
+   方法一样）。
+-  peekBack() ：该方法返回双端队列后端的第一个元素（实现方法和 Stack 类中的 peek
+   方法一样）。
+-  isEmpty()、size()、clear() 和 toString() 方法
 
 ``` js
 // 双端队列
@@ -439,3 +440,16 @@ export {
 }
 ```
 
+**链表所需要的方法：**
+
+- push(element) ：向链表尾部添加一个新元素。
+- insert(element, position) ：向链表的特定位置插入一个新元素。
+- getElementAt(index) ：返回链表中特定位置的元素。如果链表中不存在这样的元素，
+  则返回 undefined 。
+- remove(element) ：从链表中移除一个元素。
+- indexOf(element) ：返回元素在链表中的索引。如果链表中没有该元素则返回 -1 。
+- removeAt(position) ：从链表的特定位置移除一个元素。
+- isEmpty() ：如果链表中不包含任何元素，返回 true ，如果链表长度大于0则返回 false 。
+- size() ：返回链表包含的元素个数，与数组的 length 属性类似。
+- toString() ：返回表示整个链表的字符串。由于列表项使用了 Node 类，就需要重写继
+  承自 JavaScript对象默认的 toString 方法，让其只输出元素的值。

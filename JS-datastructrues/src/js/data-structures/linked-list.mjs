@@ -75,7 +75,7 @@ class LinkedList{
         // 获取插入位置之前的元素
         const previous = this.getElementAt(index - 1);
         // 获取插入位置的元素  即插入元素的后一个引用
-        const current = previous.current;
+        const current = previous.next;
         node.next = current;
         previous.next = node;
       }
@@ -115,6 +115,20 @@ class LinkedList{
   // 返回链表第一个元素的指针
   getHead() {
     return this.head;
+  }
+
+  // 将链表转换为一个字符串
+  toString() {
+    if (this.head == null) {
+      return '';
+    }
+    let current = this.head.next;
+    let objString = this.head.element;
+    for (let i = 1; i < this.count && current != null; ++i){
+      objString += `,${current.element}`;
+      current = current.next;
+    }
+    return objString;
   }
 }
 

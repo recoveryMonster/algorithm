@@ -32,9 +32,6 @@ var findDiagonalOrder = function (matrix) {
   if (yLen == 1) {
     return matrix[0];
   }
-  if (yLen == 2) {
-    return matrix[0].concat(matrix[1]);
-  }
   let row = 0;
   let column = 0;
   let xLen = matrix[0].length;
